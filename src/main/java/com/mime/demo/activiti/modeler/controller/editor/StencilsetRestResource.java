@@ -1,4 +1,4 @@
-package com.mime.demo.activiti.editor;
+package com.mime.demo.activiti.modeler.controller.editor;
 
 import org.activiti.engine.ActivitiException;
 import org.apache.commons.io.IOUtils;

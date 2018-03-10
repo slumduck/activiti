@@ -1,4 +1,4 @@
-package com.mime.demo.activiti.diagram;
+package com.mime.demo.activiti.modeler.controller.diagram;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author SlumDuck
- * @create 2018-03-09 15:01
+ * @create 2018-03-09 15:00
  * @desc
  */
 @RestController
 @RequestMapping("/service")
-public class ProcessInstanceDiagramLayoutResource extends BaseProcessDefinitionDiagramLayoutResource {
-
-    public ProcessInstanceDiagramLayoutResource() {
+public class ProcessDefinitionDiagramLayoutResource extends BaseProcessDefinitionDiagramLayoutResource {
+    public ProcessDefinitionDiagramLayoutResource() {
     }
 
     @RequestMapping(
-            value = {"/process-instance/{processInstanceId}/diagram-layout"},
+            value = {"/process-definition/{processDefinitionId}/diagram-layout"},
             method = {RequestMethod.GET},
             produces = {"application/json"}
     )
-    public ObjectNode getDiagram(@PathVariable String processInstanceId) {
-        return this.getDiagramNode(processInstanceId, (String)null);
+    public ObjectNode getDiagram(@PathVariable String processDefinitionId) {
+        return this.getDiagramNode((String)null, processDefinitionId);
     }
 }

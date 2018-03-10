@@ -1,4 +1,4 @@
-package com.mime.demo.activiti.diagram;
+package com.mime.demo.activiti.modeler.controller.diagram;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

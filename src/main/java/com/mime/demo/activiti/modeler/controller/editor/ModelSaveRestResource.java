@@ -1,4 +1,4 @@
-package com.mime.demo.activiti.editor;
+package com.mime.demo.activiti.modeler.controller.editor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
