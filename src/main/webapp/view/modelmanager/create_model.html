@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="child">
+        <el-row>
+            <el-form :inline="true" :model="formInline">
+                <el-form-item>
+                    <el-input v-model="formInline.user" placeholder="审批人">
+                        <template slot="prepend">审批人</template>
+                    </el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-select v-model="formInline.region" placeholder="活动区域">
+                        <el-option label="区域一" value="shanghai"></el-option>
+                        <el-option label="区域二" value="beijing"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" icon="el-icon-search" @click="onSubmit">
+                        <template>查询</template>
+                    </el-button>
+                </el-form-item>
+            </el-form>
+        </el-row>
+        <el-row>
+            <template>
+                <el-table
+                        stripe="true"
+                        :data="tableData"
+                        border
+                        style="width: 100%">
+                    <el-table-column
+                            type="index"
+                            :index="indexMethod">
+                    </el-table-column>
+                    <el-table-column
+                            prop="date"
+                            label="日期"
+                            width="150">
+                    </el-table-column>
+                    <el-table-column
+                            prop="name"
+                            label="姓名"
+                            width="120">
+                    </el-table-column>
+                    <el-table-column
+                            prop="province"
+                            label="省份"
+                            width="120">
+                    </el-table-column>
+                    <el-table-column
+                            prop="city"
+                            label="市区"
+                            width="120">
+                    </el-table-column>
+                    <el-table-column
+                            prop="address"
+                            label="地址"
+                            width="300">
+                    </el-table-column>
+                    <el-table-column
+                            prop="zip"
+                            label="邮编"
+                            width="120">
+                    </el-table-column>
+                    <el-table-column
+                            fixed="right"
+                            label="操作"
+                            width="100">
+                        <template slot-scope="scope">
+                            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+                            <el-button type="text" size="small">编辑</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template>
+        </el-row>
+        <el-row style="padding-top: 20px;">
+            <el-pagination
+                    background
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage4"
+                    :page-sizes="[10, 20, 30, 40]"
+                    :page-size="10"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="40">
+            </el-pagination>
+        </el-row>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    var child = new Vue({
+        el: '#child',
+        data: function() {
+            return {
+                formInline: {
+                    user: '',
+                    region: ''
+                },
+                currentPage1: 5,
+                currentPage2: 5,
+                currentPage3: 5,
+                currentPage4: 4,
+                tableData: [{
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    province: '上海',
+                    city: '普陀区',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    zip: 200333
+                }]
+            }
+        },
+        methods: {
+            indexMethod(index){
+                return index + 1;
+            },
+            onSubmit() {
+                console.log('submit!');
+            },
+            deleteRow(index, rows) {
+                rows.splice(index, 1);
+            },
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        }
+    });
+</script>
+<style>
+ *{margin: 0;
+    padding: 0;
+ }
+</style>
+</html>
